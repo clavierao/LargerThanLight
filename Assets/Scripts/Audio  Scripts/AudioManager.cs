@@ -10,6 +10,10 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    private float BGTimer = 89f;
+
+    private bool isBG=true;
+
     private void Awake()
     {
         if(instance==null)
@@ -41,6 +45,40 @@ public class AudioManager : MonoBehaviour
             m.source.volume = m.volume;
             m.source.pitch = m.pitch;
             m.source.loop = m.loop;
+        }
+    }
+
+    public void Start()
+    {
+        Music temp = GetMusic("Theater_Music_Loop");
+        temp.source.PlayOneShot(temp.clip, temp.volume);
+        BGTimer = temp.source.clip.length - 6.52f;
+    }
+
+    public void Update()
+    {
+        BGTimer -= Time.deltaTime;
+        if(BGTimer<=0f)
+        {
+            Music temp = GetMusic("Theater_Music_Loop");
+            temp.source.PlayOneShot(temp.clip, temp.volume);
+            BGTimer = temp.source.clip.length - 6.52f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            Music temp=GetMusic("Theater_Music_Loop");
+            if(isBG)
+            {
+                isBG = false;
+                temp.source.volume = 0f;
+            }
+            else
+            {
+                isBG = true;
+                temp.source.volume = 0.1f;
+            }
+
         }
     }
 
@@ -81,6 +119,8 @@ public class AudioManager : MonoBehaviour
         }
         m.source.Play();
     }
+
+    
 
     public void StopMusic(string name)
     {
