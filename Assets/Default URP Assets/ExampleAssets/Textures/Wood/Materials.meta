@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Default URP Assets/ExampleAssets/Textures/Wood/Materials.meta
 guid: 99ccc6b37e9714a4bbf8189ded259d33
+=======
+guid: bfeaa08a155259245a7388d10434311f
+>>>>>>> upstream/master:Assets/Decorations/Materials.meta
+=======
+guid: 99ccc6b37e9714a4bbf8189ded259d33
+>>>>>>> upstream/master
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
